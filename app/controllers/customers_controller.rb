@@ -27,10 +27,14 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
-   @customer = Customer.new(customer_params)
-   @customer.save
-   flash.notice = "The customer was created successfully."
-   redirect_to @customer
+    @customer = Customer.new(customer_params)
+    if @customer.save
+      flash.notice = "The customer was created successfully."
+      redirect_to @customer
+    else
+      flash.now.alert = @customer.errors.full_messages.to_sentence
+      render :new
+    end
 
     # @customer = Customer.new(customer_params)
 
@@ -48,9 +52,13 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    @customer.update(customer_params)
-    flash.notice = "The customer record was updated successfully."
-    redirect_to @customer
+    if @customer.update(customer_params)
+      flash.notice = "The customer record was updated successfully."
+      redirect_to @customer
+    else
+      flash.now.alert = @customer.errors.full_messages.to_sentence
+      render :edit
+    end
     # respond_to do |format|
     #   if @customer.update(customer_params)
     #     format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
@@ -73,19 +81,20 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :phone, :email)
-    end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_customer
+        @customer = Customer.find(params[:id])
+      end
 
-    def catch_not_found(e)
-      Rails.logger.debug("We had a not found exception.")
-      flash.alert = e.to_s
-      redirect_to customers_path
-    end
+      # Only allow a list of trusted parameters through.
+      def customer_params
+        params.require(:customer).permit(:first_name, :last_name, :phone, :email)
+      end
+
+      def catch_not_found(e)
+        Rails.logger.debug("We had a not found exception.")
+        flash.alert = e.to_s
+        redirect_to customers_path
+      end
 end
