@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
+# rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
 layout 'customer_layout'
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -39,7 +39,7 @@ layout 'customer_layout'
     # end
 
 
-    @customer = Customer.new(customer_params)
+    @customer = Customer.new(customer_sparams)
     if @customer.save
     flash.notice = "The customer record was created successfully."
     redirect_to @customer
