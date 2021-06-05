@@ -21,12 +21,13 @@
 </p>
 
 <div id="orders">
-  <h1>Orders</h1>
+  <h1>Customers Orders:</h1>
 
-  <%=  render @order.orders%>
+  <%=  render @customer.orders%>
   <h2> All orders</h2>
-  <%= render partial: "orders/form", locals: {order: @order.orders.new}%>
+  <%= render partial: "orders/form", locals: {order: @customer.orders.new}%>
   </div>
+
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

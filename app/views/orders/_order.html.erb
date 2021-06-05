@@ -1,0 +1,7 @@
+<div>
+  <strong><%= order.product_name %> Product:</strong>
+  <%=order.product_count %>
+    <div class="order-admin">
+    <%= link_to "Edit", edit_customer_orders_path(@customer, order)%>
+    </div>
+</div>

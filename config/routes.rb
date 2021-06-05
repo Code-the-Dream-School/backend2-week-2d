@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: 'order#index'
-  resource :orders
-  resources :customers do
 
+  resources :customers do
+    resource :orders
+    
   end
 
 end

@@ -3,6 +3,7 @@ class CustomersController < ApplicationController
 layout 'customer_layout'
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+
   # GET /customers
   # GET /customers.json
   def index
@@ -76,9 +77,6 @@ redirect_to @customer
       render :edit
     end
   end
-
-
-
 
   # DELETE /customers/1
   # DELETE /customers/1.json

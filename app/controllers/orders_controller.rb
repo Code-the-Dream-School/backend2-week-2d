@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    before_action :set_customer
 
   def index
     @orders = Order.all
@@ -20,8 +21,12 @@ class OrdersController < ApplicationController
     redirect_to @Order
   end
 
+  # def edit
+  #   set_order
+  # end
+
   def edit
-    set_order
+  @order = Order.find(params[:customer_id])
   end
 
   def update
@@ -35,6 +40,10 @@ class OrdersController < ApplicationController
     @order.destroy
     redirect_to orders_path
   end
+
+  def set_customer
+   @customer = Customer.find(params[:customer_id])
+ end
 
   private
   def order_params
