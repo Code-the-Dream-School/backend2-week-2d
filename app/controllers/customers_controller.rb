@@ -12,6 +12,7 @@ layout 'customer_layout'
   # GET /customers/1
   # GET /customers/1.json
   def show
+    @orders = Order.find(params[:id])
   end
 
   # GET /customers/new
@@ -39,7 +40,7 @@ layout 'customer_layout'
     # end
 
 
-    @customer = Customer.new(customer_sparams)
+    @customer = Customer.new(customer_params)
     if @customer.save
     flash.notice = "The customer record was created successfully."
     redirect_to @customer
@@ -92,7 +93,6 @@ redirect_to @customer
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-
       @customer = Customer.find(params[:id])
     end
 
