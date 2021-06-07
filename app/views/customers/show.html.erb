@@ -20,14 +20,20 @@
   <%= @customer.email %>
 </p>
 
-<div id="orders">
-  <h1>Customers Orders:</h1>
-
-  <%=  render @customer.orders%>
-  <h2> All orders</h2>
-  <%= render partial: "orders/form", locals: {order: @customer.orders.new}%>
-  </div>
-
-
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
+
+<br>
+
+
+  <h1> <%= @customer.full_name %>'s Orders: </h1>
+
+
+  <%=  render @customer.orders%>
+
+
+
+  <h2> Add New Order</h2>
+
+  <%= render partial: "orders/form", locals: {order: @customer.orders.new}%>
+  </div>

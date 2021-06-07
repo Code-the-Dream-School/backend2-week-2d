@@ -2,7 +2,5 @@
 
 <%= render 'form', order: @order %>
 
-<%= f.collection_select :customer_id, Customer.all, :id, :full_name, include_blank: true %>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', @order %> 

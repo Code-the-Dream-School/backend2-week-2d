@@ -13,7 +13,7 @@ layout 'customer_layout'
   # GET /customers/1
   # GET /customers/1.json
   def show
-    @orders = Order.find(params[:id])
+    # @orders = Order.find(params[:id])
   end
 
   # GET /customers/new
@@ -68,9 +68,9 @@ layout 'customer_layout'
     # end
 
 
-if @customer.update(customer.params)
-flash.notice = "The customer record was updated sucessfully."
-redirect_to @customer
+  if @customer.update(customer_params)
+  flash.notice = "The customer record was updated sucessfully."
+  redirect_to @customer
 
     else
       flash.now.alert = @customer.errors.full_messages.to_sentence

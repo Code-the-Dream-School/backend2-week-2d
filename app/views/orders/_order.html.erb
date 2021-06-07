@@ -1,7 +1,12 @@
 <div>
-  <strong><%= order.product_name %> Product:</strong>
-  <%=order.product_count %>
+  <strong> Product: <%= order.product_name %> </strong>
+  <br>
+  <strong> Product Count: <%= order.product_count %> </strong>
+
     <div class="order-admin">
-    <%= link_to "Edit", edit_customer_orders_path(@customer, order)%>
+
+    <%= link_to 'Show', order %>
+    <%= link_to 'Update', edit_order_path(order) %>
+    <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
 </div>
