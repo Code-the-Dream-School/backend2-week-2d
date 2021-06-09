@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product name</strong>
+  <%= @order.product_name%>
+</p>
+
+<p>
+  <strong>Product count</strong>
+  <%= @order.product_count%>
+ 
+</p>
+
+<p>
+      <strong>Customer</strong>
+      <%=@customer.last_name%>
+</p>
+
+
+<%= link_to 'Back', orders_path %>
